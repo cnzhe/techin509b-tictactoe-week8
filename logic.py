@@ -3,6 +3,7 @@
 # should be unit-testable.
 
 def make_empty_board():
+    """Creates an empty Tic-Tac-Toe board."""
     return [
         [None, None, None],
         [None, None, None],

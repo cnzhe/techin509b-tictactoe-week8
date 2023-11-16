@@ -4,6 +4,7 @@ import logic
 # there are 3 functions in logic.py and the check_winner() to be tested.
 class TestLogic(unittest.TestCase):
 
+    # test for the make_empty_board function
     def test_make_empty_board(self):
         empty_board = logic.make_empty_board()
         expected_board = [
@@ -13,6 +14,7 @@ class TestLogic(unittest.TestCase):
         ]
         self.assertEqual(empty_board, expected_board)
 
+    # test for get_winner function
     def test_get_winner(self):
         board = [
             ['X', None, 'O'],
@@ -21,6 +23,7 @@ class TestLogic(unittest.TestCase):
         ]
         self.assertEqual(logic.get_winner(board), 'X')
 
+    # additional tests for the check_winner function
     def test_check_winner(self):
         boards = [
             (  # Board 1:
@@ -109,6 +112,7 @@ class TestLogic(unittest.TestCase):
             with self.subTest(board_number=i):
                 self.assertEqual(logic.get_winner(board), expected_winner)
 
+    # test for the other_player function
     def test_other_player(self):
         player_x = 'X'
         player_o = 'O'
