@@ -123,7 +123,6 @@ class TestLogic(unittest.TestCase):
         self.assertEqual(logic.other_player(player_o), 'X')
 
 class TestGame(unittest.TestCase):
-
     @patch('builtins.input', side_effect=['single'])
     def test_game_init_single_mode(self, mock_input):
         game = Game(mode='single')
