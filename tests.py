@@ -1,5 +1,8 @@
 import unittest
+from unittest.mock import patch
+from io import StringIO
 import logic
+from cli import Game
 
 # there are 3 functions in logic.py and the check_winner() to be tested.
 class TestLogic(unittest.TestCase):
@@ -118,6 +121,22 @@ class TestLogic(unittest.TestCase):
         player_o = 'O'
         self.assertEqual(logic.other_player(player_x), 'O')
         self.assertEqual(logic.other_player(player_o), 'X')
+
+class TestGame(unittest.TestCase):
+
+    @patch('builtins.input', side_effect=['single'])
+    def test_game_init_single_mode(self, mock_input):
+        game = Game(mode='single')
+        self.assertEqual(game.mode, 'single')
+
+    @patch('builtins.input', side_effect=['two'])
+    def test_game_init_two_players_mode(self, mock_input):
+        game = Game(mode='two')
+        self.assertEqual(game.mode, 'two')
+
+    def test_game_init_empty_board(self):
+        game = Game(mode='single')
+        self.assertEqual(game.board, logic.make_empty_board())
 
 if __name__ == '__main__':
     unittest.main()
